@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="parallelExecution.Class4">
+      <class name="SerialExecution.Class1">
         <methods>
           <include name="Main"/>
         </methods>
-      </class> <!-- parallelExecution.Class4 -->
+      </class> <!-- SerialExecution.Class1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

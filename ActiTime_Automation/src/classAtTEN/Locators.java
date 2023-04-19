@@ -3,35 +3,43 @@ package classAtTEN;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Locators {
 
 	public static void main(String[] args) throws InterruptedException {
-		//All Locators methods are of By Class.(Static)
-		/*
-		 * tagName() id() name() className() linkText() partialLinkText() cssSelector()
-		 * Xpath()
-		 */
+		
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
 		System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.get("http://msi/login.do");
+		WebDriver driver = new ChromeDriver(co);
+		//driver.get("http://msi/login.do");
 		Thread.sleep(3000);
-		/*
-		 * driver.findElement(By.className("textField")).sendKeys("admin");
-		 * driver.findElement(By.name("pwd")).sendKeys("manager"); Thread.sleep(3000);
-		 * driver.findElement(By.id("loginButton")).click(); Thread.sleep(3000);
-		 */
-		//driver.findElement(By.linkText("Logout")).click();
-		//driver.findElement(By.partialLinkText("ogo")).click();
-		//css selector Tagname[@attributeName=""]
-		//driver.findElement(By.cssSelector("input[name='username']")).sendKeys("admin");
-		//Xpath type 1:- xpath("//tagName[@attribute='value of attribute']")
-		/* username textfield */driver.findElement(By.xpath("//input[@type='text']")).sendKeys("admin");
-		Thread.sleep(2000);
-		/* password textfield */driver.findElement(By.xpath("//input[@name='pwd']")).sendKeys("manager");
-		Thread.sleep(2000);
-		//Xpath type 2:- xpath("//tagName[text()='value of attribute']")
-		driver.findElement(By.id("loginButton")).click();
+		/*String PageTitle = driver.getTitle();
+		System.out.println(PageTitle);
+		String PageSourse = driver.getPageSource();
+		System.out.println(PageSourse);
+		String PageURl = driver.getCurrentUrl();
+		System.out.println(PageURl);*/
+		driver.navigate().to("http://msi/login.do");
+		Thread.sleep(3000);
+		driver.navigate().refresh();
+		String PageWindowHandle = driver.getWindowHandle();
+		System.out.println(PageWindowHandle);
+		driver.manage().window().maximize();
+		Thread.sleep(3000);
+		//driver.findElement(By.partialLinkText("Actimin")).click();
+		//driver.findElement(By.name("username")).sendKeys("admin");
+		//driver.findElement(By.name("pwd")).sendKeys("manager");
+		//driver.findElement(By.id("loginButton")).click();
+		driver.findElement(By.cssSelector("input[name='pwd']")).sendKeys("manager");
+		driver.findElement(By.xpath("//input[@name='username' and @class='textField']")).sendKeys("admin");
+		//driver.findElement(By.xpath("//a[.='Actimind Inc.']")).click();
+		//xpath(""//tagname[conatins(@attribute,'attribute value')])
+		driver.findElement(By.xpath("//a[contains(@id,'loginButton')]")).click();
+		Thread.sleep(3000);
+		driver.quit();
+		
 		
 		
 		

@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="classes" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="classes" name="Test(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Testxml(failed)">
     <classes>
-      <class name="parallelExecution.Class4">
+      <class name="SerialExecution.Class1">
         <methods>
           <include name="Main"/>
         </methods>
-      </class> <!-- parallelExecution.Class4 -->
+      </class> <!-- SerialExecution.Class1 -->
+      <class name="SerialExecution.Class3">
+        <methods>
+          <include name="Main"/>
+        </methods>
+      </class> <!-- SerialExecution.Class3 -->
+      <class name="SerialExecution.Class4">
+        <methods>
+          <include name="Main"/>
+        </methods>
+      </class> <!-- SerialExecution.Class4 -->
+      <class name="SerialExecution.Class2">
+        <methods>
+          <include name="Main"/>
+        </methods>
+      </class> <!-- SerialExecution.Class2 -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Testxml(failed) -->
 </suite> <!-- Failed suite [Suite] -->

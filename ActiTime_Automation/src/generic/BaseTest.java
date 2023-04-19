@@ -1,15 +1,17 @@
 package generic;
 
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
-import org.junit.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -29,8 +31,12 @@ public class BaseTest implements IAutoConstant{
 		String url = flib.readPropertyData(PROP_PATH, "url");
 		if(browservalue.equalsIgnoreCase("chrome"))
 		{
+		
+		
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
 		System.setProperty(CHROME_KEY, CHROME_PATH);
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		driver.get(url);
@@ -55,7 +61,6 @@ public class BaseTest implements IAutoConstant{
 		}
 	}
 	
-
 	@AfterMethod
 	public void tearDown()
 	{

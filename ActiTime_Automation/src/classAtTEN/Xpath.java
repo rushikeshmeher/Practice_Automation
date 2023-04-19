@@ -3,6 +3,7 @@ package classAtTEN;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Xpath {
 
@@ -13,9 +14,10 @@ public class Xpath {
 		//absolute Xpath :- /html/body/form/table/tr/td/table/tbody/tr[1]/td/table/tbody/tr[3]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[3]/td/table/tbody/tr[1]/td[2]/input
 		//relative xpath:- 
 	
-		
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
 		System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = new ChromeDriver(co);
 		driver.get("http://msi/login.do");
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("admin");

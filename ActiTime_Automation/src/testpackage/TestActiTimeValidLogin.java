@@ -1,7 +1,6 @@
 package testpackage;
 
 import java.io.IOException;
-
 import generic.BaseTest;
 import generic.Flib;
 import pagepackage.HomePage;
